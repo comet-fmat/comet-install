@@ -42,3 +42,11 @@
 **11.- Click Add SSH key.**
 
 **12.-If prompted, confirm your GitHub password.**
+
+**13.- Clone repository**
+
+	git clone https://github.com/comet-fmat/comet-install.git
+	cd comet-install/
+**14.- Execute**
+
+	./install-comet.sh

@@ -53,18 +53,25 @@ bundle install
 git submodule update --init --recursive
 bundle exec rake db:reset
 
-#cd ext/tmc-sandbox
-#sudo make
 
-#cd web
-#bundle install
-#rake ext
-#rvmsudo rake test
-#cd -
-#rake compile
-#sudo apt-get install check
-#cd tmc-sandbox/uml/output/tmc-check
-#rvmsudo make rubygems install clean
+echo "Build sandbox"
+cd ext/tmc-sandbox
+sudo make
+
+echo "Install tmc-sandbox web dependencies"
+cd web
+bundle install
+rake ext
+rvmsudo rake test
+
+echo "Compile rest of the externals"
+cd -
+rake compile
+
+echo "Install tmc-check"
+sudo apt-get install check
+cd tmc-sandbox/uml/output/tmc-check
+rvmsudo make rubygems install clean
 
 
 
