@@ -46,23 +46,25 @@ echo "Create postgres user"
 sudo -H -u postgres psql -c "CREATE USER tmc PASSWORD 'tmc' CREATEDB CREATEROLE CREATEUSER;"
 
 echo "TMC-server installation"
-git clone git@github.com:comet-fmat/tmc-server.git
-cd tmc-server
+git clone git@github.com:comet-fmat/tmc-server.git /home/tmc/tmc-server
+cd /home/tmc/tmc-server
 #sudo apt-get -y install rake bundler
 bundle install
 git submodule update --init --recursive
 bundle exec rake db:reset
-cd ext/tmc-sandbox
-sudo make
-cd web
-bundle install
-rake ext
-rvmsudo rake test
-cd -
-rake compile
-sudo apt-get install check
-cd tmc-sandbox/uml/output/tmc-check
-rvmsudo make rubygems install clean
+
+#cd ext/tmc-sandbox
+#sudo make
+
+#cd web
+#bundle install
+#rake ext
+#rvmsudo rake test
+#cd -
+#rake compile
+#sudo apt-get install check
+#cd tmc-sandbox/uml/output/tmc-check
+#rvmsudo make rubygems install clean
 
 
 
